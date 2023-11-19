@@ -7,6 +7,13 @@
     tools:context=".MainActivity">
 
 
+    <Button
+        android:id="@+id/showInterstitialAdsBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Show Interstitial Ads"/>
+
     <RelativeLayout
         android:id="@+id/adBannerCon"
         android:layout_width="wrap_content"
