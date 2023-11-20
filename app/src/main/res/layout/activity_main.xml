@@ -14,6 +14,23 @@
         android:layout_centerInParent="true"
         android:text="Show Interstitial Ads"/>
 
+    <Button
+        android:id="@+id/showRewardedAdsBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/showInterstitialAdsBtn"
+        android:text="Show Rewarded Ads"/>
+
+    <TextView
+        android:id="@+id/rewardedCoinTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rewarded Amount"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/showRewardedAdsBtn"
+        android:textSize="22sp"
+        android:textStyle="bold"/>
+
     <RelativeLayout
         android:id="@+id/adBannerCon"
         android:layout_width="wrap_content"

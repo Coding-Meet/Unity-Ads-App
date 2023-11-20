@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import com.unity3d.services.banners.UnityBannerSize
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 //        showBannerAds(
 //            this,
 //            findViewById(R.id.adBannerCon),
-//            "bannerads",
+//            "Banner_Android",
 //            UnityBannerSize(320,50)
 //        )
 
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 //        showBannerAds(
 //            this,
 //            findViewById(R.id.adBannerCon),
-//            "bannerads",
+//            "Banner_Android",
 //         UnityBannerSize.iabStandard
 //        )
 
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 //        showBannerAds(
 //            this,
 //            findViewById(R.id.adBannerCon),
-//            "bannerads",
+//            "Banner_Android",
 //         UnityBannerSize.leaderboard
 //        )
 
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         showBannerAds(
             this,
             findViewById(R.id.adBannerCon),
-            "bannerads",
+            "Banner_Android",
             UnityBannerSize.standard
         )
 
@@ -50,15 +51,36 @@ class MainActivity : AppCompatActivity() {
 
         val myInterstitialAds = MyInterstitialAds(this)
         // placementId change in  Monetization console
-        myInterstitialAds.loadInterstitialAds("video")
+        myInterstitialAds.loadInterstitialAds("Interstitial_Android")
 
         showInterstitialAdsBtn.setOnClickListener {
             // placementId change in  Monetization console
-            myInterstitialAds.showInterstitialAds("video") {
+            myInterstitialAds.showInterstitialAds("Interstitial_Android") {
                 val afterIntent = Intent(this,AfterInterstitialActivity::class.java)
                 startActivity(afterIntent)
             }
         }
 
+        val sharedPreferenceManger = SharedPreferenceManger(this)
+        getRewardedCoin(sharedPreferenceManger.totalRewardedCoin)
+        val showRewardedAdsBtn = findViewById<Button>(R.id.showRewardedAdsBtn)
+        val myRewardedAds = MyRewardedAds(this)
+        // placementId change in  Monetization console
+        myRewardedAds.loadRewardedAds("Rewarded_Android")
+
+        showRewardedAdsBtn.setOnClickListener {
+            // placementId change in  Monetization console
+            myRewardedAds.showRewardedAds("Rewarded_Android"){
+                val rewardedCoin = 10 // Here Your Rewarded Coin Add
+                sharedPreferenceManger.totalRewardedCoin += rewardedCoin
+                getRewardedCoin(sharedPreferenceManger.totalRewardedCoin)
+            }
+        }
+
+    }
+
+    private fun getRewardedCoin(totalRewardedCoin: Int) {
+        val rewardedCoinTxt = findViewById<TextView>(R.id.rewardedCoinTxt)
+        rewardedCoinTxt.text = "Total Rewarded Coins: $totalRewardedCoin Coins"
     }
 }

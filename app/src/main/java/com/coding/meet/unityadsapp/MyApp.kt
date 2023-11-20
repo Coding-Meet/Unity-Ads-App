@@ -9,7 +9,7 @@ class MyApp : Application() {
 
         // gameId change in  Monetization console
         // testMode if app release change to false
-        UnityAds.initialize(this,"14851",true,
+        UnityAds.initialize(this,"5204341",true,
             object : IUnityAdsInitializationListener{
                 override fun onInitializationComplete() {}
 
